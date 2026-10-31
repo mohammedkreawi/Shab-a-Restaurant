@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شبعة | اطلب وجبتك</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="customer">
+<header class="site-header">
+  <a class="brand" href="#"><span class="brand-mark">ل</span><span>شبعة<span class="brand-dot">.</span><small>طعم يجمعنا</small></span></a>
+  <nav class="main-nav"><a href="#home" class="active">الرئيسية</a><a href="#categories">الأصناف</a><a href="#menu">قائمة الطعام</a><a href="#track">طلباتي</a></nav>
+  <div class="header-actions"><a class="admin-link" href="admin.html">لوحة المطعم</a><button class="cart-button" id="openCart">السلة <span id="cartCount">0</span> <b>🛒</b></button><button class="menu-toggle" id="menuToggle">☰</button></div>
+</header>
+
+<main>
+<section class="hero section-wrap" id="home">
+  <div class="hero-copy"><span class="eyebrow">أهلاً بك في شبعة</span><h1>وجبتك المفضلة،<br><em>على باب بيتك.</em></h1><p>نكهات طازجة ومكونات مختارة بعناية. اختر ما تحب ودع الباقي علينا.</p><a href="#menu" class="btn btn-primary">استكشف القائمة <span>←</span></a>
+    <div class="hero-meta"><span>⭐ 4.9 تقييم الزبائن</span><span>◷ توصيل سريع</span></div>
+  </div>
+  <div class="hero-visual"><div class="hero-circle"></div><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900" alt="وجبة برغر شهية"><div class="floating-note"><b>طازج يومياً</b><small>جودة تحسّها في كل شبعة</small></div></div>
+</section>
+
+<section class="section-wrap category-section" id="categories"><div class="section-heading"><div><span class="eyebrow">اكتشف ما تحب</span><h2>تصفّح حسب الصنف</h2></div><span class="muted">اختر الصنف المفضل لديك</span></div><div class="category-list" id="categoryList"></div></section>
+
+<section class="section-wrap menu-section" id="menu"><div class="section-heading"><div><span class="eyebrow">اختياراتنا لك</span><h2>قائمة الطعام</h2></div><div class="menu-tools"><input id="searchMenu" type="search" placeholder="ابحث عن وجبتك..."><select id="sortMenu"><option value="default">ترتيب افتراضي</option><option value="low">السعر: الأقل أولاً</option><option value="high">السعر: الأعلى أولاً</option></select></div></div><div class="food-grid" id="foodGrid"></div></section>
+
+<section class="track-section" id="track"><div class="section-wrap track-inner"><div><span class="eyebrow">تابع طلبك</span><h2>طلبك في أي مرحلة؟</h2><p>أدخل رقم الطلب الذي ظهر لك بعد تأكيد الشراء.</p></div><form id="trackForm" class="track-form"><input id="trackId" placeholder="مثال: LQ-123456" required><button class="btn btn-dark">متابعة الطلب</button></form><div id="trackResult" class="track-result"></div></div></section>
+</main>
+<footer class="footer"><div class="brand"><span class="brand-mark">ل</span><span>شبعة<span class="brand-dot">.</span><small>طعم يجمعنا</small></span></div><p>نكهة تحبها، وتجربة تستحقها.</p><span>© 2026 شبعة. جميع الحقوق محفوظة.</span></footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer"><div class="drawer-head"><h3>سلة مشترياتك</h3><button class="icon-btn" id="closeCart">✕</button></div><div id="cartItems" class="cart-items"></div><div class="cart-bottom"><div class="total-line"><span>الإجمالي</span><strong id="cartTotal">0 د.ل</strong></div><button class="btn btn-primary full" id="checkoutBtn">إتمام الطلب</button></div></aside>
+
+<div class="modal" id="mealModal"><div class="modal-card"><button class="modal-close" id="closeMeal">✕</button><img id="modalImage" alt=""><div class="modal-content"><span class="eyebrow">تخصيص الوجبة</span><h3 id="modalName"></h3><p id="modalDesc"></p><label>الحجم</label><div class="choice-row" id="sizeChoices"></div><label>إضافات اختيارية</label><div class="extras" id="extraChoices"></div><div class="modal-actions"><div class="qty-control"><button id="modalMinus">−</button><b id="modalQty">1</b><button id="modalPlus">+</button></div><button class="btn btn-primary" id="addConfigured">أضف إلى السلة</button></div></div></div></div>
+
+<div class="modal" id="checkoutModal"><div class="modal-card checkout-card"><button class="modal-close" id="closeCheckout">✕</button><div class="modal-content"><span class="eyebrow">خطوة أخيرة</span><h3>بيانات التوصيل</h3><p>أدخل بياناتك لإرسال الطلب إلى المطعم.</p><form id="checkoutForm" class="checkout-form"><label>الاسم الكامل</label><input name="name" required placeholder="اسمك"><label>رقم الهاتف</label><input name="phone" required type="tel" placeholder="09xxxxxxxx"><label>عنوان التوصيل</label><textarea name="address" required placeholder="المدينة، المنطقة، الشارع، أقرب نقطة دالة"></textarea><label>ملاحظات (اختياري)</label><input name="notes" placeholder="أي تفاصيل إضافية"><div class="total-line"><span>الإجمالي المستحق</span><strong id="checkoutTotal">0 د.ل</strong></div><button class="btn btn-primary full">تأكيد الطلب</button></form></div></div></div>
+<div class="toast" id="toast"></div>
+<script src="js/app.js"></script>
+</body></html>
